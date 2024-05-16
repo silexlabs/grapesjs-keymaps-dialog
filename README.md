@@ -1,7 +1,7 @@
 # GrapesJS Keymap Dialog
 
 This GrapesJS plugin implements a floating UI showing the available keymaps for the editor.
-You can open it by holding a key (``Shift``, by default) during a certain amount of time and/or with a shortcut (``Shift+K`` by default).
+You can open it by holding a key (``Shift`` by default) during a certain amount of time and/or with a shortcut (``Shift+K`` by default).
 
 > This code is part of a bigger project. Check out [Silex v3](https://github.com/silexlabs/Silex).
 
