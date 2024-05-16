@@ -4,6 +4,13 @@ This GrapesJS plugin implements a floating UI showing the available keymaps for 
 
 > This code is part of a bigger project. Check out [Silex v3](https://github.com/silexlabs/Silex).
 
+### Features
+
+- 🎨 Customizable CSS
+- ✨ Modern UI
+- 📦 No configuration needed (uses the GrapesJS Keymap API)
+- 🌿 Lightweight plugin (~ 15 KB)
+
 ### Demonstration
 
 You can check a demonstration of this plugin [here](##).
