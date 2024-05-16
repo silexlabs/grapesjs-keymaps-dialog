@@ -40,19 +40,6 @@ body, html {
 ```
 
 
-## Summary
-
-* Plugin name: `grapesjs-keymaps-dialog`
-* Components
-    * `component-id-1`
-    * `component-id-2`
-    * ...
-* Blocks
-    * `block-id-1`
-    * `block-id-2`
-    * ...
-
-
 
 ## Options
 
