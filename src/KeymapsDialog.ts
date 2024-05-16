@@ -32,9 +32,9 @@ const defaultCSS = `
   transform: translateX(-50%);
   background-color: #494949;
   border: #808080 solid 1px;
-  border-radius: 10px;
+  border-radius: 15px;
   z-index: 1000;
-  padding: 20px;
+  padding: 20px 23px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.33);
   animation: keymaps-fade-in 0.2s;
 }
@@ -45,12 +45,23 @@ const defaultCSS = `
 
 #keymaps-dialog header {
   border-bottom: #6e6e6e solid 1px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+#keymaps-dialog main {
+  display: flex;
 }
 
 #keymaps-dialog ul {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(9, 1fr);
+  grid-template-columns: 1fr;
+  grid-column-gap: 30px;
+  grid-row-gap: 6px;
   list-style: none;
+  margin-right: 25px;
 }
 
 #keymaps-dialog * {
@@ -59,6 +70,40 @@ const defaultCSS = `
   color: #ddd;
   font-family: Ubuntu, sans-serif;
 }
+
+#keymaps-dialog h4 {
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+#keymaps-dialog .keymap {
+  border-radius: 13px;
+  padding: 6px 24px 9px 6px;
+  white-space: nowrap
+}
+
+#keymaps-dialog .keymap:nth-child(odd) {
+  background-color: #575757;
+}
+
+#keymaps-dialog .keys {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+#keymaps-dialog .key {
+  display: inline-block;
+  border: #ddd solid 2px;
+  border-radius: 7px;
+  box-shadow: 0 3px 0 #ddd;
+  padding: 3px 10px;
+  margin-right: 5px;
+}
+
+#keymaps-dialog .name {
+  white-space: nowrap;
+}
+
 `;
 
 /**
@@ -115,6 +160,8 @@ export class KeymapsDialog {
    * Renders the dialog.
    */
   renderDialog(): void {
+    const reg = this.manager.keymapsRegistry
+
     render(html`
       <style>${this.renderCSS()}</style>
       <div id="keymaps-dialog" class="${this.closing ? 'fade-out' : ''}" style="${this.isOpen ? 'display: block' : ''}">
@@ -122,17 +169,20 @@ export class KeymapsDialog {
           <h3>Keyboard Shortcuts</h3>
         </header>
         <main>
-          ${Object.keys(this.manager.keymapsRegistry).map(category => html`
+          ${Object.keys(reg).map(category => html`
             <section class="category">
               <h4>${category}</h4>
               <ul>
-                <li class="keymap">
-                  <div class="keys">
-                    <span class="key"></span>
-                    <span class="key"></span>
-                  </div>
-                  <span class="name"></span>
-                </li>
+                ${reg[category].map(keymap => html`
+                  <li class="keymap">
+                    <div class="keys">
+                      ${keymap.keys.map(key => html`
+                        <span class="key">${key}</span>
+                      `)}
+                    </div>
+                    <span class="name">${keymap.name}</span>
+                  </li>
+                `)}
               </ul>
             </section>
           `)}

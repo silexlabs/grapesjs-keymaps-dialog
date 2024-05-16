@@ -1,4 +1,3 @@
-import { html, render } from 'lit-html'
 import { Editor } from 'grapesjs'
 import { KeymapsDialogManager } from './KeymapsDialogManager'
 
@@ -8,8 +7,9 @@ export default (editor: Editor, opts = {}): void => {
   const options = {
     ...{
       longPressKey: 'shift',
-      longPressDuration: 600,
-      shortcut: 'shift+,',
+      longPressDuration: 800,
+      shortcut: 'shift+k',
+      css: null
     }, ...opts
   }
 

@@ -48,6 +48,7 @@ export class KeymapsDialogManager {
      */
     updateRegistry(): void {
         const keymaps = this.editor.Keymaps.getAll()
+        console.log(keymaps)
         this.keymapsRegistry = {}
 
         for (const keymapId in keymaps) {
@@ -55,7 +56,9 @@ export class KeymapsDialogManager {
 
             const category = titleCase(splitKeymapId[0])
             const name = splitKeymapId[1].split('-').map(titleCase).join(' ')
-            const keys = keymaps[keymapId].keys.split('+').map(titleCase)
+            // TODO: For now, it only displays the first keymap
+            const keys = keymaps[keymapId].keys.split(',')[0]
+              .replace(/\b/, '').split('+').map(titleCase)
 
             if (!this.keymapsRegistry[category]) {
                 this.keymapsRegistry[category] = []
