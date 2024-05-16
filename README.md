@@ -15,9 +15,6 @@ You can open it by holding a key (``Shift`` by default) during a certain amount 
 ### Demonstration
 
 You can check a demonstration of this plugin [here](##).
-> **Provide a live demo of your plugin**
-For a better user engagement create a simple live demo by using services like [JSFiddle](https://jsfiddle.net) [CodeSandbox](https://codesandbox.io) [CodePen](https://codepen.io) and link it here in your README (attaching a screenshot/gif will also be a plus).
-To help you in this process here below you will find the necessary HTML/CSS/JS, so it just a matter of copy-pasting on some of those services. After that delete this part and update the link above
 
 ![demo](https://github.com/SuperDelphi/grapesjs-keymaps-dialog/assets/44942598/9b5b6d75-9557-4470-885a-fb4bc4858c12)
 
