@@ -51,6 +51,27 @@ const defaultCSS = `
 
 #keymaps-dialog main {
   display: flex;
+  position: relative;
+  max-width: 60vw;
+  overflow-x: auto;
+}
+
+#keymaps-dialog .mask {
+  position: sticky;
+  flex-shrink: 0;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  right: 0;
+  background-image: linear-gradient(to right, transparent, #494949 90%);
+}
+
+#keymaps-dialog .category {
+  margin-right: 25px;
+}
+
+#keymaps-dialog .category:last-child {
+  margin-right: 0;
 }
 
 #keymaps-dialog ul {
@@ -61,7 +82,6 @@ const defaultCSS = `
   grid-column-gap: 30px;
   grid-row-gap: 6px;
   list-style: none;
-  margin-right: 25px;
 }
 
 #keymaps-dialog * {
@@ -140,7 +160,6 @@ export class KeymapsDialog {
 
     // Handle the fade-out animation
     const dialog = document.getElementById('keymaps-dialog')
-    console.log(dialog)
     dialog?.addEventListener('animationend', () => {
       if (dialog.classList.contains('fade-out')) {
         dialog.style.display = 'none'
@@ -186,6 +205,7 @@ export class KeymapsDialog {
               </ul>
             </section>
           `)}
+          <div class="mask"></div>
         </main>
       </div>
     `, document.body)

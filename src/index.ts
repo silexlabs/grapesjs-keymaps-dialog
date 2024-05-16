@@ -18,11 +18,9 @@ export default (editor: Editor, opts = {}): void => {
   // Command
   editor.Commands.add(cmdKeymapsDialog, {
     run(editor: Editor) {
-      console.log('Opening keymaps dialog')
       manager.openDialog()
     },
     stop(editor: Editor) {
-      console.log('Closing keymaps dialog')
       manager.closeDialog()
     }
   })
