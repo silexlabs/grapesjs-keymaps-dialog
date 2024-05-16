@@ -55,7 +55,10 @@ body, html {
 
 | Option | Description | Default |
 |-|-|-
-| `option1` | Description option | `default value` |
+| `longPressKey` | The key you can hold to open the dialog. | `shift` |
+| `longPressDuration` | The minimum hold time of the ``longPressKey`` (in milliseconds). | `800`
+| `shortcut` | The (optional) shortcut that can open/close the dialog. | `shift+k`
+| `css` | The (optional) CSS of the dialog in case you wish to customize it. | `null`
 
 
 
