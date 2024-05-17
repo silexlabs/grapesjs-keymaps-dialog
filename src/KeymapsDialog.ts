@@ -76,7 +76,7 @@ const defaultCSS = `
 #keymaps-dialog ul {
   display: grid;
   grid-auto-flow: column;
-  grid-template-rows: repeat(12, 1fr);
+  grid-template-rows: repeat(9, 1fr);
   grid-template-columns: 1fr;
   grid-column-gap: 15px;
   grid-row-gap: 2px;

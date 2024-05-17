@@ -26,11 +26,14 @@ export default (editor: Editor, opts = {}): void => {
   })
 
   // Shortcut triggering the command
+  let isShortcutActive = false
   if (options.shortcut) {
-    editor.Keymaps.add('general:show-shortcuts', options.shortcut, () => {
+    editor.Keymaps.add('general:toggle-shortcuts-help', options.shortcut, () => {
       if (editor.Commands.isActive(cmdKeymapsDialog)) {
+        isShortcutActive = false
         editor.stopCommand(cmdKeymapsDialog)
       } else {
+        isShortcutActive = true
         editor.runCommand(cmdKeymapsDialog)
       }
     })
@@ -49,10 +52,9 @@ export default (editor: Editor, opts = {}): void => {
     }
   })
 
-  // TODO: Make the longPressKey not close the dialog if the shortcut opened the dialog
   document.addEventListener('keyup', event => {
     // Clear the long press timeout if the key is released (and close the dialog)
-    if (event.key.toLowerCase() === options.longPressKey) {
+    if (event.key.toLowerCase() === options.longPressKey && !isShortcutActive) {
       if (longPressTimeout) {
         clearTimeout(longPressTimeout)
         longPressTimeout = undefined
