@@ -30,7 +30,7 @@ You can check a demonstration of this plugin [here](##).
 ### JS
 ```js
 const editor = grapesjs.init({
-	container: '#gjs',
+  container: '#gjs',
   height: '100%',
   fromElement: true,
   storageManager: false,
