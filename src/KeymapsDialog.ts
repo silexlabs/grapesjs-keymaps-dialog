@@ -111,8 +111,10 @@ const defaultCSS = `
 }
 
 #keymaps-dialog .keymap {
+  display: flex;
+  align-items: center;
   border-radius: 7px;
-  padding: 5px 20px 6px 5px;
+  padding: 6px 20px 6px 5px;
   white-space: nowrap;
 }
 
@@ -121,18 +123,24 @@ const defaultCSS = `
 }
 
 #keymaps-dialog .keys {
-  display: inline-block;
-  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
 }
 
 #keymaps-dialog .key {
+  height: 1rem;
+  line-height: 1rem;
   display: inline-block;
-  border: #ddd solid 1px;
+  vertical-align: middle;
+  /*border: #ddd solid 1px;*/
   border-radius: 4px;
-  box-shadow: 0 2px 0 #ddd;
-  transform: translateY(-2px);
-  padding: 1px 5px;
-  margin-right: 2px;
+  background-color: #ffffff20;
+  color: #ddd;
+  /*box-shadow: 0 2px 0 #ddd;*/
+  /*transform: translateY(-2px);*/
+  padding: 0 5px;
+  margin-right: 5px;
 }
 
 #keymaps-dialog .name {
