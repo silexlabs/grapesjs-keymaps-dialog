@@ -14,37 +14,9 @@ You can open it by holding a key (``Shift`` by default) during a certain amount 
 
 ### Demonstration
 
-You can check a demonstration of this plugin [here](##).
+You can check a demonstration of this plugin [here](##). [SOON]
 
 ![image](https://github.com/SuperDelphi/grapesjs-keymaps-dialog/assets/44942598/0e4ff5b2-1695-4ce2-9b16-7d331d7220b9)
-
-### HTML
-```html
-<link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">
-<script src="https://unpkg.com/grapesjs"></script>
-<script src="https://unpkg.com/grapesjs-keymaps-dialog"></script>
-
-<div id="gjs"></div>
-```
-
-### JS
-```js
-const editor = grapesjs.init({
-  container: '#gjs',
-  height: '100%',
-  fromElement: true,
-  storageManager: false,
-  plugins: ['grapesjs-keymaps-dialog'],
-});
-```
-
-### CSS
-```css
-body, html {
-  margin: 0;
-  height: 100%;
-}
-```
 
 
 
