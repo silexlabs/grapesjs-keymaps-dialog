@@ -1,6 +1,6 @@
 import { html, render } from 'lit-html'
 import { PluginOptions } from 'grapesjs'
-import { KeymapsDialogManager } from './KeymapsDialogManager'
+import { KeymapsDialogManager, titleCase } from './KeymapsDialogManager'
 
 const defaultCSS = `
 @keyframes keymaps-fade-in {
@@ -20,21 +20,21 @@ const defaultCSS = `
     opacity: 1;
   }
   to {
-    transform: translate(-50%, 8px);
+    transform: translate(-50%, 10px);
     opacity: 0;
   }
 }
 
 #keymaps-dialog {
   position: absolute;
-  bottom: 100px;
+  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #494949;
   border: #808080 solid 1px;
-  border-radius: 15px;
+  border-radius: 10px;
   z-index: 1000;
-  padding: 20px 23px;
+  padding: 15px 18px 25px 28px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.33);
   animation: keymaps-fade-in 0.2s;
 }
@@ -44,16 +44,15 @@ const defaultCSS = `
 }
 
 #keymaps-dialog header {
-  border-bottom: #6e6e6e solid 1px;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 #keymaps-dialog main {
   display: flex;
   position: relative;
-  max-width: 60vw;
+  max-width: 80vw;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 #keymaps-dialog .mask {
@@ -61,49 +60,64 @@ const defaultCSS = `
   flex-shrink: 0;
   top: 0;
   bottom: 0;
-  width: 20px;
+  width: 10px;
   right: 0;
   background-image: linear-gradient(to right, transparent, #494949 90%);
 }
 
 #keymaps-dialog .category {
-  margin-right: 25px;
+  margin-right: 15px;
 }
 
-#keymaps-dialog .category:last-child {
+#keymaps-dialog .category:last-of-type {
   margin-right: 0;
 }
 
 #keymaps-dialog ul {
   display: grid;
   grid-auto-flow: column;
-  grid-template-rows: repeat(9, 1fr);
+  grid-template-rows: repeat(12, 1fr);
   grid-template-columns: 1fr;
-  grid-column-gap: 30px;
-  grid-row-gap: 6px;
+  grid-column-gap: 15px;
+  grid-row-gap: 2px;
   list-style: none;
 }
 
 #keymaps-dialog * {
+  cursor: default;
   padding: 0;
   margin: 0;
   color: #ddd;
   font-family: Ubuntu, sans-serif;
 }
 
-#keymaps-dialog h4 {
-  margin-bottom: 20px;
+#keymap-dialog *::selection, #keymap-dialog *::-moz-selection {
+  background-color: transparent;
+}
+
+#keymaps-dialog h3 {
+  text-align: center;
+  font-size: 0.85rem;
   opacity: 0.5;
 }
 
+#keymaps-dialog h4 {
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+#keymaps-dialog span {
+  font-size: 0.75rem;
+}
+
 #keymaps-dialog .keymap {
-  border-radius: 13px;
-  padding: 6px 24px 9px 6px;
-  white-space: nowrap
+  border-radius: 7px;
+  padding: 5px 20px 6px 5px;
+  white-space: nowrap;
 }
 
 #keymaps-dialog .keymap:nth-child(odd) {
-  background-color: #575757;
+  background-color: #535353;
 }
 
 #keymaps-dialog .keys {
@@ -113,11 +127,12 @@ const defaultCSS = `
 
 #keymaps-dialog .key {
   display: inline-block;
-  border: #ddd solid 2px;
-  border-radius: 7px;
-  box-shadow: 0 3px 0 #ddd;
-  padding: 3px 10px;
-  margin-right: 5px;
+  border: #ddd solid 1px;
+  border-radius: 4px;
+  box-shadow: 0 2px 0 #ddd;
+  transform: translateY(-2px);
+  padding: 1px 5px;
+  margin-right: 2px;
 }
 
 #keymaps-dialog .name {
@@ -185,7 +200,7 @@ export class KeymapsDialog {
       <style>${this.renderCSS()}</style>
       <div id="keymaps-dialog" class="${this.closing ? 'fade-out' : ''}" style="${this.isOpen ? 'display: block' : ''}">
         <header>
-          <h3>Keyboard Shortcuts</h3>
+          <h3>Keyboard Shortcuts (hold ${titleCase(this.options.longPressKey)} to show)</h3>
         </header>
         <main>
           ${Object.keys(reg).map(category => html`

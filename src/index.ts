@@ -25,6 +25,19 @@ export default (editor: Editor, opts = {}): void => {
     }
   })
 
+  // TODO: Remove this after testing
+  editor.Keymaps.add('general:open-settings', 'alt+s', 'test')
+  editor.Keymaps.add('general:open-publish', 'alt+p', 'test')
+  editor.Keymaps.add('general:open-fonts', 'alt+f', 'test')
+  editor.Keymaps.add('general:preview-mode', 'tab', 'test')
+  editor.Keymaps.add('panels:layers', 'shift+l', 'test')
+  editor.Keymaps.add('panels:blocks', 'shift+a', 'test')
+  editor.Keymaps.add('panels:notifications', 'shift+n', 'test')
+  editor.Keymaps.add('panels:pages', 'shift+p', 'test')
+  editor.Keymaps.add('panels:symbols', 'shift+s', 'test')
+  editor.Keymaps.add('panels:close-panel', 'escape', 'test')
+  editor.Keymaps.add('workflow:select-body', 'shift+b', 'test')
+
   // Shortcut triggering the command
   if (options.shortcut) {
     editor.Keymaps.add('general:show-shortcuts', options.shortcut, () => {
@@ -62,7 +75,7 @@ export default (editor: Editor, opts = {}): void => {
   })
 
   // TODO: Remove this after testing
-  editor.on('load', () => {
-    editor.runCommand(cmdKeymapsDialog)
-  })
+  // editor.on('load', () => {
+  //   editor.runCommand(cmdKeymapsDialog)
+  // })
 }

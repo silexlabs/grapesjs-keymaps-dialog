@@ -14,7 +14,7 @@ interface KeymapsRegistry {
  * Capitalizes the first letter of a string and lowercases the rest.
  * @param str The string to capitalize.
  */
-function titleCase(str: string): string {
+export function titleCase(str: string): string {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
 }
 
