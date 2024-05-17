@@ -1,6 +1,7 @@
 # GrapesJS Keymap Dialog
 
 This GrapesJS plugin implements a floating UI showing the available keymaps for the editor.
+You can open it by holding a key (``Shift`` by default) during a certain amount of time and/or with a shortcut (``Shift+K`` by default).
 
 > This code is part of a bigger project. Check out [Silex v3](https://github.com/silexlabs/Silex).
 
@@ -9,14 +10,13 @@ This GrapesJS plugin implements a floating UI showing the available keymaps for 
 - 🎨 Customizable CSS
 - ✨ Modern UI
 - 📦 No configuration needed (uses the GrapesJS Keymap API)
-- 🌿 Lightweight plugin (~ 15 KB)
+- 🌿 Lightweight plugin
 
 ### Demonstration
 
 You can check a demonstration of this plugin [here](##).
-> **Provide a live demo of your plugin**
-For a better user engagement create a simple live demo by using services like [JSFiddle](https://jsfiddle.net) [CodeSandbox](https://codesandbox.io) [CodePen](https://codepen.io) and link it here in your README (attaching a screenshot/gif will also be a plus).
-To help you in this process here below you will find the necessary HTML/CSS/JS, so it just a matter of copy-pasting on some of those services. After that delete this part and update the link above
+
+![demo](https://github.com/SuperDelphi/grapesjs-keymaps-dialog/assets/44942598/9b5b6d75-9557-4470-885a-fb4bc4858c12)
 
 ### HTML
 ```html
@@ -52,7 +52,10 @@ body, html {
 
 | Option | Description | Default |
 |-|-|-
-| `option1` | Description option | `default value` |
+| `longPressKey` | The key you can hold to open the dialog. | `shift` |
+| `longPressDuration` | The minimum hold time of the ``longPressKey`` (in milliseconds). | `800`
+| `shortcut` | The (optional) shortcut that can open/close the dialog. | `shift+k`
+| `css` | The (optional) CSS of the dialog in case you wish to customize it. | `null`
 
 
 
