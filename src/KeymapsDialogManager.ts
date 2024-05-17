@@ -48,7 +48,6 @@ export class KeymapsDialogManager {
      */
     updateRegistry(): void {
         const keymaps = this.editor.Keymaps.getAll()
-        console.log(keymaps)
         this.keymapsRegistry = {}
 
         for (const keymapId in keymaps) {
