@@ -10,7 +10,7 @@ You can open it by holding a key (``Shift`` by default) during a certain amount 
 - 🎨 Customizable CSS
 - ✨ Modern UI
 - 📦 No configuration needed (uses the GrapesJS Keymap API)
-- 🌿 Lightweight plugin (~ 15 KB)
+- 🌿 Lightweight plugin
 
 ### Demonstration
 
