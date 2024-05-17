@@ -30,8 +30,8 @@ const defaultCSS = `
   bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #494949;
-  border: #808080 solid 1px;
+  background-color: #333333;
+  border: #404040 solid 1px;
   border-radius: 10px;
   z-index: 1000;
   padding: 15px 18px 25px 28px;
@@ -62,7 +62,7 @@ const defaultCSS = `
   bottom: 0;
   width: 10px;
   right: 0;
-  background-image: linear-gradient(to right, transparent, #494949 90%);
+  background-image: linear-gradient(to right, transparent, #333333 90%);
 }
 
 #keymaps-dialog .category {
@@ -117,7 +117,7 @@ const defaultCSS = `
 }
 
 #keymaps-dialog .keymap:nth-child(odd) {
-  background-color: #535353;
+  background-color: #404040;
 }
 
 #keymaps-dialog .keys {
