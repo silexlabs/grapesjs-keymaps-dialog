@@ -3,40 +3,26 @@ import { PluginOptions } from 'grapesjs'
 import { KeymapsDialogManager, titleCase } from './KeymapsDialogManager'
 
 const defaultCSS = `
-@keyframes keymaps-fade-in {
-  from {
-    transform: translate(-50%, 8px);
-    opacity: 0;
-  }
-  to {
-    transform: translate(-50%, 0);
-    opacity: 1;
-  }
-}
-
-@keyframes keymaps-fade-out {
-  from {
-    transform: translate(-50%, 0);
-    opacity: 1;
-  }
-  to {
-    transform: translate(-50%, 10px);
-    opacity: 0;
-  }
-}
-
 #keymaps-dialog {
   position: absolute;
   bottom: 50px;
   left: 50%;
-  transform: translateX(-50%);
   background-color: #333333;
   border: #404040 solid 1px;
   border-radius: 10px;
   z-index: 1000;
   padding: 15px 18px 25px 28px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.33);
-  animation: keymaps-fade-in 0.2s;
+  transform: scaleY(0.5) translate(-50%, 0);
+  transform-origin: bottom center;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+#keymaps-dialog.open {
+  transform: scaleY(1) translate(-50%, 0);
+  opacity: 1;
 }
 
 #keymaps-dialog.fade-out {
@@ -133,12 +119,9 @@ const defaultCSS = `
   line-height: 1rem;
   display: inline-block;
   vertical-align: middle;
-  /*border: #ddd solid 1px;*/
   border-radius: 4px;
   background-color: #ffffff20;
   color: #ddd;
-  /*box-shadow: 0 2px 0 #ddd;*/
-  /*transform: translateY(-2px);*/
   padding: 0 5px;
   margin-right: 5px;
 }
@@ -163,6 +146,7 @@ export class KeymapsDialog {
     this.options = opts
     this.isOpen = false
     this.closing = false
+    this.renderDialog()
   }
 
   /**
@@ -178,17 +162,7 @@ export class KeymapsDialog {
    */
   close(): void {
     this.isOpen = false
-    this.closing = true
     this.renderDialog()
-
-    // Handle the fade-out animation
-    const dialog = document.getElementById('keymaps-dialog')
-    dialog?.addEventListener('animationend', () => {
-      if (dialog.classList.contains('fade-out')) {
-        dialog.style.display = 'none'
-        this.closing = false
-      }
-    })
   }
 
   /**
@@ -206,12 +180,12 @@ export class KeymapsDialog {
 
     render(html`
       <style>${this.renderCSS()}</style>
-      <div id="keymaps-dialog" class="${this.closing ? 'fade-out' : ''}" style="${this.isOpen ? 'display: block' : ''}">
+      <div id="keymaps-dialog" class="${this.isOpen ? 'open' : ''}">
         <header>
           <h3>Keyboard Shortcuts (hold ${titleCase(this.options.longPressKey)} to show)</h3>
         </header>
         <main>
-          ${Object.keys(reg).map(category => html`
+          ${reg && Object.keys(reg).map(category => html`
             <section class="category">
               <h4>${category}</h4>
               <ul>

@@ -22,23 +22,18 @@ export function titleCase(str: string): string {
  * Manages the state of the keymaps help dialog.
  */
 export class KeymapsDialogManager {
-    /**
-     * Whether the keymaps registry is dirty and needs to be updated.
-     */
-    isDirty: boolean
     editor: Editor
     dialog: KeymapsDialog
     keymapsRegistry: KeymapsRegistry
 
     constructor(editor: Editor, opts: PluginOptions) {
-        this.isDirty = true
         this.editor = editor
         this.dialog = new KeymapsDialog(this, opts)
         this.keymapsRegistry = {}
 
-        // Asks for a registry update next time the keymaps are modified
+        // Updates the keymaps registry when a keymap is added or removed
         editor.on('keymap:add keymap:remove', () => {
-            this.isDirty = true
+            this.updateRegistry()
         })
     }
 
@@ -71,10 +66,6 @@ export class KeymapsDialogManager {
      * Opens the keymaps help dialog.
      */
     openDialog(): void {
-        if (this.isDirty) {
-            this.updateRegistry()
-            this.isDirty = false
-        }
         this.dialog.open()
     }
 
