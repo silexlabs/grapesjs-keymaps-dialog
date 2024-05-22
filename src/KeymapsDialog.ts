@@ -139,13 +139,11 @@ export class KeymapsDialog {
   manager: KeymapsDialogManager
   options: PluginOptions
   isOpen: boolean
-  closing: boolean
 
   constructor(manager: KeymapsDialogManager, opts: PluginOptions) {
     this.manager = manager
     this.options = opts
     this.isOpen = false
-    this.closing = false
     this.renderDialog()
   }
 
